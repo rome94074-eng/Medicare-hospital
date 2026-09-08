@@ -4,39 +4,60 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
-    color: #222;
+    color: #183b56;
     background: #ffffff;
 }
 
+a {
+    text-decoration: none;
+}
+
+/* NAVIGATION */
+header {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
 .navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 30px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 18px 6%;
-    background: white;
-    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+    gap: 25px;
 }
 
 .logo {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
-}
-
-.logo span {
     color: #087f8c;
+    white-space: nowrap;
 }
 
-nav {
+.nav-links {
     display: flex;
-    gap: 20px;
+    gap: 30px;
 }
 
-nav a {
-    text-decoration: none;
-    color: #222;
+.nav-links a {
+    color: #183b56;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #087f8c;
 }
 
 .appointment-btn,
@@ -44,41 +65,64 @@ nav a {
     display: inline-block;
     background: #087f8c;
     color: white;
-    padding: 12px 20px;
-    border-radius: 6px;
-    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 8px;
     font-weight: bold;
+    transition: 0.3s;
 }
 
+.appointment-btn:hover,
+.primary-btn:hover {
+    background: #05656f;
+    transform: translateY(-2px);
+}
+
+/* HERO */
 .hero {
-    min-height: 550px;
+    min-height: 650px;
     display: flex;
     align-items: center;
-    padding: 60px 8%;
-    background: #eaf8f9;
+    background: linear-gradient(
+        135deg,
+        #e9f9fb 0%,
+        #f7fcfd 55%,
+        #dff4f6 100%
+    );
+    padding: 80px 30px;
 }
 
 .hero-content {
-    max-width: 650px;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
 }
 
 .small-title,
-.section-heading p {
+.section-label {
     color: #087f8c;
+    font-size: 14px;
     font-weight: bold;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
 }
 
 .hero h1 {
-    font-size: 52px;
-    line-height: 1.1;
-    margin-bottom: 20px;
+    max-width: 750px;
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.08;
+    margin-bottom: 25px;
+    color: #12344d;
 }
 
-.hero p {
-    font-size: 18px;
-    margin-bottom: 25px;
+.hero h1 span {
+    color: #087f8c;
+}
+
+.hero-text {
+    max-width: 650px;
+    font-size: 19px;
+    color: #526b7a;
+    margin-bottom: 35px;
 }
 
 .hero-buttons {
@@ -89,145 +133,281 @@ nav a {
 
 .secondary-btn {
     display: inline-block;
-    padding: 12px 20px;
+    padding: 13px 22px;
     border: 2px solid #087f8c;
-    border-radius: 6px;
+    border-radius: 8px;
     color: #087f8c;
-    text-decoration: none;
     font-weight: bold;
+    transition: 0.3s;
 }
 
-.section {
-    padding: 80px 8%;
-}
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 45px;
-}
-
-.section-heading h2,
-.about h2,
-.appointment h2 {
-    font-size: 36px;
-    margin-bottom: 15px;
-}
-
-.services-grid,
-.doctors-grid,
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-}
-
-.service-card,
-.doctor-card {
-    padding: 30px;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-}
-
-.icon {
-    font-size: 35px;
-    margin-bottom: 15px;
-}
-
-.service-card h3,
-.doctor-card h3 {
-    margin-bottom: 10px;
-}
-
-.about {
-    padding: 80px 8%;
-    background: #f5fafb;
-}
-
-.about div {
-    max-width: 700px;
-}
-
-.about p {
-    margin-bottom: 15px;
-}
-
-.doctor-image {
-    font-size: 60px;
-    margin-bottom: 15px;
-}
-
-.doctors-grid {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.appointment {
-    padding: 80px 8%;
+.secondary-btn:hover {
     background: #087f8c;
     color: white;
 }
 
-.appointment .small-title {
-    color: white;
+/* SECTIONS */
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 90px 30px;
+    text-align: center;
 }
 
-.appointment p {
+.section h2 {
+    font-size: 42px;
+    color: #12344d;
+    margin-bottom: 15px;
+}
+
+.section-intro {
+    max-width: 650px;
+    margin: 0 auto 50px;
+    color: #647987;
+    font-size: 18px;
+}
+
+/* SERVICES */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    text-align: left;
+}
+
+.service-card {
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e4eef0;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 50, 70, 0.07);
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 50, 70, 0.12);
+}
+
+.icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8f8fa;
+    border-radius: 12px;
+    font-size: 27px;
     margin-bottom: 20px;
 }
 
-.contact-grid {
+.service-card h3 {
+    color: #12344d;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: #6a7d88;
+}
+
+/* ABOUT */
+.about {
+    background: #12344d;
+    color: white;
+    padding: 90px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.about-content {
+    max-width: 600px;
+    margin-left: auto;
+}
+
+.about .section-label {
+    color: #67d5dc;
+}
+
+.about h2 {
+    font-size: 45px;
+    line-height: 1.15;
+    margin-bottom: 25px;
+}
+
+.about p {
+    color: #d5e3e8;
+    margin-bottom: 18px;
+    font-size: 17px;
+}
+
+.about .primary-btn {
+    margin-top: 15px;
+}
+
+.about-box {
+    max-width: 500px;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-right: auto;
+}
+
+.about-box div {
+    padding: 30px 15px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     text-align: center;
 }
 
-.contact-grid div {
-    padding: 25px;
+.about-box strong {
+    display: block;
+    font-size: 30px;
+    color: #67d5dc;
 }
 
+.about-box span {
+    font-size: 14px;
+    color: #d5e3e8;
+}
+
+/* CONTACT */
+.contact {
+    text-align: center;
+    padding: 100px 30px;
+    background: #e9f9fb;
+}
+
+.contact h2 {
+    max-width: 700px;
+    margin: auto auto 20px;
+    font-size: 42px;
+    color: #12344d;
+}
+
+.contact > p:not(.section-label) {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    color: #627984;
+    font-size: 18px;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* FOOTER */
 footer {
-    padding: 35px 8%;
-    background: #111;
+    background: #0c2638;
     color: white;
     text-align: center;
+    padding: 45px 25px;
+}
+
+.footer-logo {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 footer p {
-    margin-top: 8px;
+    color: #b8cbd3;
+    margin-bottom: 8px;
 }
 
+.copyright {
+    font-size: 13px;
+    margin-top: 20px;
+}
 
-/* Mobile phones */
-@media (max-width: 768px) {
-
-    .navbar {
-        flex-direction: column;
+/* TABLET */
+@media (max-width: 900px) {
+    .nav-links {
         gap: 15px;
     }
 
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
+    .appointment-btn {
+        display: none;
     }
 
-    .hero {
-        min-height: 500px;
-        padding: 50px 7%;
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .hero h1 {
-        font-size: 38px;
-    }
-
-    .services-grid,
-    .doctors-grid,
-    .contact-grid {
+    .about {
         grid-template-columns: 1fr;
     }
 
-    .section-heading h2,
-    .about h2,
-    .appointment h2 {
-        font-size: 30px;
+    .about-content,
+    .about-box {
+        margin: auto;
     }
-  }
+}
+
+/* PHONE */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 15px 18px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 600px;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero-text {
+        font-size: 17px;
+    }
+
+    .section {
+        padding: 70px 20px;
+    }
+
+    .section h2,
+    .contact h2 {
+        font-size: 32px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about {
+        padding: 70px 20px;
+        gap: 40px;
+    }
+
+    .about h2 {
+        font-size: 34px;
+    }
+
+    .about-box {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .contact {
+        padding: 70px 20px;
+    }
+}
